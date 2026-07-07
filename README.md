@@ -92,7 +92,8 @@ Thompson J, et al. Integration of metabolomics into early phase clinical trials 
 
 Licence
 This code is shared under the MIT License, unless otherwise stated.
+
 Contact
 For questions about the analysis, please contact the corresponding author of the associated manuscript.
-<img width="468" height="651" alt="image" src="https://github.com/user-attachments/assets/182b792a-6ca3-4635-8208-b181c025ea67" />
+
 
