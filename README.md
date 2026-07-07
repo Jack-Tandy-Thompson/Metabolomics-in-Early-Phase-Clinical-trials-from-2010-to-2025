@@ -7,29 +7,43 @@ Integration of metabolomics into early phase clinical trials from 2010 to 2025
 The analysis identifies early phase interventional clinical trials registered in the WHO International Clinical Trials Registry Platform (ICTRP), classifies trials by phase, registry, country, year and outcome field, and identifies studies incorporating metabolomics or related omics terminology.
 
 Repository contents
+
 •	analysis.R
 Main R script used to clean the ICTRP dataset, identify early phase trials, detect metabolomics-related studies, remove duplicate registrations, generate summary tables and produce figures.
+
 •	country_lookup.csv
 Lookup table used to standardise inconsistent country names in ICTRP records.
+
 •	continent_analysis.csv
 Manually curated country-to-continent classification and continent-level summary input.
+
 •	outputs/
 Folder for generated analysis outputs, including cleaned datasets, summary tables and figures.
 
 Data source
+
 The analysis uses the WHO ICTRP clinical trial dataset exported as:
+
 ICTRP_Full_R.csv
+
 This file is not included in the repository because it should be obtained directly from the WHO ICTRP or relevant permitted source. To reproduce the analysis, place ICTRP_Full_R.csv in the project root directory before running the script.
+
 The input dataset used in the original analysis contained 1,173,018 records and 63 variables.
 
 Main outputs
+
 The script generates:
+
 •	ICTRP_All.csv
 Early phase interventional clinical trials from 2010 to 2025 after duplicate handling.
+
 •	ICTRP_Met.csv
 Subset of early phase trials containing metabolomics-related search terms.
+
 •	country_met_fraction.csv
 Country-level counts and proportions of metabolomics studies.
+
+
 Additional outputs include summary tables and figures stratified by:
 •	country
 •	continent
@@ -39,6 +53,7 @@ Additional outputs include summary tables and figures stratified by:
 •	outcome classification
 
 Search strategy
+
 Metabolomics-related studies were identified by searching selected ICTRP fields for the following terms:
 •	metabolom*
 •	metabonom*
@@ -50,6 +65,7 @@ Metabolomics-related studies were identified by searching selected ICTRP fields 
 •	glycom*
 •	steroidom*
 •	metaboli* phenotyping
+
 The searched fields were:
 •	public title
 •	scientific title
