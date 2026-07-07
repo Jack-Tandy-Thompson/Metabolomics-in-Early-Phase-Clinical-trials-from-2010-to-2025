@@ -6,7 +6,7 @@ Integration of metabolomics into early phase clinical trials from 2010 to 2025
 
 The analysis identifies early phase interventional clinical trials registered in the WHO International Clinical Trials Registry Platform (ICTRP), classifies trials by phase, registry, country, year and outcome field, and identifies studies incorporating metabolomics or related omics terminology.
 
-Repository contents
+**Repository contents**
 
 •	analysis.R
 Main R script used to clean the ICTRP dataset, identify early phase trials, detect metabolomics-related studies, remove duplicate registrations, generate summary tables and produce figures.
@@ -30,7 +30,7 @@ This file is not included in the repository because it should be obtained direct
 
 The input dataset used in the original analysis contained 1,173,018 records and 63 variables.
 
-Main outputs
+**Main outputs**
 
 The script generates:
 
@@ -52,7 +52,7 @@ Additional outputs include summary tables and figures stratified by:
 •	year
 •	outcome classification
 
-Search strategy
+**Search strategy**
 
 Metabolomics-related studies were identified by searching selected ICTRP fields for the following terms:
 •	metabolom*
@@ -74,7 +74,8 @@ The searched fields were:
 •	conditions
 •	interventions
 
-Software requirements
+**Software requirements**
+
 The analysis was conducted in R using the following packages:
 •	tidyverse
 •	dplyr
@@ -95,21 +96,26 @@ How to run the analysis
 3.	Ensure country_lookup.csv and continent_analysis.csv are present.
 4.	Open the R project or set the working directory to the repository root.
 5.	Run analysis.R.
+   
 Example:
 source("analysis.R")
 
-Reproducibility notes
+**Reproducibility notes**
+
 The ICTRP country field contains heterogeneous free-text entries. Country names were therefore standardised using a manually curated lookup table. Trials hosted in multiple countries were handled using fractional weighting so that each trial contributed a total weight of one across hosting countries.
 Duplicate registrations were identified using normalised public and scientific titles, with the earliest registration date retained where duplicate records were detected.
 
-Citation
+**Citation**
+
 If using or adapting this code, please cite the associated manuscript and the archived repository DOI.
 Thompson J, et al. Integration of metabolomics into early phase clinical trials from 2010 to 2025.
 
-Licence
+**Licence**
+
 This code is shared under the MIT License, unless otherwise stated.
 
-Contact
+**Contact**
+
 For questions about the analysis, please contact the corresponding author of the associated manuscript.
 
 
