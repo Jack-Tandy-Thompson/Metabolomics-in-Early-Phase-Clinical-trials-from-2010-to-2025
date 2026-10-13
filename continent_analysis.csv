@@ -1,0 +1,187 @@
+﻿Row number,Continent,Country, Metabolomic_Weighted_total ,Metabolomic_Absolute_counts,All_Weighted_total ,All_Absolute_counts,Fraction_metabolomic,Percent_metabolomic
+1,South America,Ecuador,1,1,6.23,19,0.160396598,16.03965977
+2,Europe,Albania,0.56,3,4.45,22,0.125663431,12.56634314
+3,Africa,Senegal,2.25,3,20.03,32,0.112345422,11.23454222
+4,Africa,Burkina Faso,2,2,31.93,55,0.062641944,6.26419443
+5,Africa,Rwanda,1,1,17.37,34,0.057570169,5.75701693
+6,Africa,Gabon,1,1,29.11,46,0.034354295,3.43542954
+7,Asia,Bangladesh,2.25,3,141.79,154,0.015868172,1.58681715
+8,South America,Peru,1.1,2,84.21,525,0.013062952,1.30629523
+9,Europe,United Kingdom,76.38,88,5853.31,14033,0.013049735,1.30497345
+10,Africa,Zambia,0.25,1,20.83,40,0.012004233,1.20042329
+11,Europe,Norway,5.11,6,499.29,1577,0.010236803,1.02368034
+12,Africa,South Africa,4.04,5,426.43,1453,0.00947037,0.94703698
+13,Europe,Denmark,14.92,20,1620.43,4033,0.009207843,0.92078433
+14,Asia,Indonesia,2,2,252.81,260,0.007911213,0.79112125
+15,Europe,Holland,34.16,44,4682.5,9329,0.007295147,0.72951466
+16,Europe,Finland,2.48,5,360.86,1395,0.006861853,0.68618534
+17,Asia,China,236.04,237,39659.31,41675,0.005951653,0.59516527
+18,Europe,Serbia,0.56,5,95.6,858,0.005819169,0.58191693
+19,Europe,Lithuania,0.42,4,77.49,587,0.005448896,0.54488963
+20,Europe,Hungary,2.35,12,495.94,3707,0.004747971,0.47479707
+21,Europe,Poland,4.84,14,1039.1,6416,0.00465488,0.46548796
+22,Asia,Malaysia,1,1,223.09,729,0.004482564,0.44825641
+23,North America,Canada,16.04,20,3604.11,10066,0.004450045,0.44500447
+24,Europe,Ukraine,0.84,7,188.53,1418,0.004439027,0.44390267
+25,Asia,Thailand,14.04,15,3321.28,4062,0.004226823,0.42268232
+26,Oceania,Australia,17.81,21,4531.77,9783,0.003928955,0.39289546
+27,Europe,France,15.48,23,4356.03,12433,0.003553998,0.35539976
+28,Europe,Sweden,3.59,7,1124.22,3137,0.003190936,0.31909363
+29,Asia,Pakistan,1.25,2,461.42,475,0.002709024,0.27090239
+30,Europe,Switzerland,2.28,4,866.68,2615,0.002628154,0.2628154
+31,Europe,Greece,0.99,7,392.64,1941,0.002531689,0.25316885
+32,Europe,Italy,7.42,17,3114.22,10801,0.002381287,0.2381287
+33,Asia,South Korea,10,10,4217.9,7905,0.002370848,0.23708483
+34,Europe,Germany,12.86,26,5570.84,14413,0.002308501,0.23085011
+35,Europe,Estonia,0.14,1,62.86,502,0.002272703,0.22727033
+36,Europe,Belgium,4.9,8,2253.43,7481,0.002174277,0.21742768
+37,Asia,Taiwan,2,2,1016.14,3350,0.001968227,0.19682267
+38,North America,United States,80.21,90,40922.67,53965,0.001960055,0.19600552
+39,Asia,Singapore,1,1,510.54,1562,0.001958717,0.19587172
+40,Europe,Spain,6.2,16,3374.76,13085,0.001837394,0.18373937
+41,Europe,Ireland,0.36,2,207.14,983,0.001743291,0.17432912
+42,Europe,Austria,1.54,3,899.64,3161,0.001710086,0.17100859
+43,Oceania,New Zealand,1.33,2,843.62,2079,0.001580496,0.15804955
+44,South America,Brazil,2,2,1385.47,3148,0.001443556,0.14435561
+45,Europe,Romania,0.31,3,218.02,1584,0.001399538,0.13995377
+46,Asia,Turkey,0.41,4,299.86,1835,0.001378832,0.13788321
+47,Europe,Czech Republic,0.82,4,607.81,3819,0.001352767,0.13527668
+48,Asia,Japan,8.04,9,6077.97,9274,0.001322558,0.13225575
+49,Europe,Bulgaria,0.36,4,319.25,2095,0.001129778,0.11297783
+50,South America,Chile,0.1,1,149.57,1034,0.000668593,0.06685932
+51,Europe,Russia,0.29,3,671.56,2792,0.00043545,0.04354497
+52,South America,Colombia,0.04,1,101.02,678,0.000380739,0.03807392
+53,Asia,Israel,0.35,3,936.41,3312,0.000373768,0.03737683
+54,Asia,India,5.04,6,13814.06,14644,0.000364734,0.03647343
+55,Europe,Portugal,0.08,1,263.43,1374,0.000316334,0.03163342
+56,North America,Mexico,0.14,2,464.44,1825,0.000298125,0.02981252
+57,Europe,Slovakia,0.04,1,141.93,1070,0.000270997,0.02709974
+58,Asia,Iran,1,1,5748.78,5755,0.00017395,0.01739501
+59,Africa,Egypt,0,0,1569.6,1687,0,0
+60,South America,Argentina,0,0,211.52,1922,0,0
+61,Africa,Nigeria,0,0,184.88,199,0,0
+62,North America,Cuba,0,0,165.63,169,0,0
+63,Africa,Kenya,0,0,159.42,269,0,0
+64,Asia,Saudi Arabia,0,0,125.55,231,0,0
+65,Asia,Jordan,0,0,115.83,189,0,0
+66,Asia,Vietnam,0,0,115.56,227,0,0
+67,Africa,Uganda,0,0,113.12,194,0,0
+68,Asia,Georgia,0,0,95.08,624,0,0
+69,Europe,Moldova,0,0,92.94,434,0,0
+70,Asia,Iraq,0,0,92.16,95,0,0
+71,Africa,Tanzania,0,0,81.73,116,0,0
+72,Asia,Lebanon,0,0,76.38,262,0,0
+73,Asia,Philippines,0,0,73.85,372,0,0
+74,Europe,Slovenia,0,0,70.09,282,0,0
+75,Africa,Tunisia,0,0,68.35,126,0,0
+76,Asia,Sri Lanka,0,0,62.09,87,0,0
+77,Europe,Croatia,0,0,61.62,441,0,0
+78,Africa,Ghana,0,0,59.24,85,0,0
+79,Europe,Latvia,0,0,58.91,517,0,0
+80,Africa,Ethiopia,0,0,54.63,57,0,0
+81,Africa,Mali,0,0,52.48,65,0,0
+82,Europe,Belarus,0,0,48.07,164,0,0
+83,North America,Panama,0,0,39.01,133,0,0
+84,Asia,United Arab Emirates,0,0,34.52,72,0,0
+85,North America,Dominican Republic,0,0,31.86,57,0,0
+86,Africa,Malawi,0,0,31.5,63,0,0
+87,Asia,Cyprus,0,0,22.11,44,0,0
+88,Africa,Congo,0,0,21.52,33,0,0
+89,Africa,Gambia,0,0,20.58,29,0,0
+90,Asia,Kazakhstan,0,0,20.17,33,0,0
+91,Africa,Zimbabwe,0,0,20.13,63,0,0
+92,North America,Antigua And Barbuda,0,0,19.42,31,0,0
+93,Europe,Bosnia And Herzegovina,0,0,18.65,131,0,0
+94,Africa,Sudan,0,0,17.67,22,0,0
+95,Asia,Syria,0,0,17.17,21,0,0
+96,Asia,Armenia,0,0,16.98,42,0,0
+97,North America,Honduras,0,0,16.75,39,0,0
+98,Africa,Cameroon,0,0,16.33,20,0,0
+99,Africa,Côte D'Ivoire,0,0,15.41,31,0,0
+100,Asia,Mongolia,0,0,15.08,17,0,0
+101,Asia,North Korea,0,0,13.75,142,0,0
+102,Europe,Luxembourg,0,0,13.54,45,0,0
+103,Europe,Iceland,0,0,13.46,57,0,0
+104,North America,Jamaica,0,0,13.07,24,0,0
+105,Asia,Nepal,0,0,12.78,15,0,0
+106,North America,Guatemala,0,0,11.78,105,0,0
+107,Asia,Laos,0,0,11.45,14,0,0
+108,Africa,Mauritius,0,0,11.26,49,0,0
+109,Africa,Botswana,0,0,10.22,33,0,0
+110,North America,El Salvador,0,0,10.21,23,0,0
+111,Asia,Palestine,0,0,10.16,13,0,0
+112,Africa,Guinea,0,0,10.01,14,0,0
+113,Asia,Qatar,0,0,9.99,23,0,0
+114,Europe,Macedonia,0,0,9.97,84,0,0
+115,Africa,Mozambique,0,0,9.94,30,0,0
+116,South America,Paraguay,0,0,9.92,26,0,0
+117,South America,Bolivia,0,0,9.38,11,0,0
+118,Asia,Myanmar,0,0,9.01,11,0,0
+119,Asia,Kuwait,0,0,9,17,0,0
+120,Asia,Oman,0,0,8.32,36,0,0
+121,Oceania,Papua New Guinea,0,0,8.01,9,0,0
+122,Africa,Sierra Leone,0,0,7.5,10,0,0
+123,Asia,Cambodia,0,0,7.13,10,0,0
+124,North America,Haiti,0,0,6.86,26,0,0
+125,Asia,Uzbekistan,0,0,6.76,9,0,0
+126,South America,Uruguay,0,0,6.51,8,0,0
+127,Africa,Benin,0,0,6.35,11,0,0
+128,Africa,Liberia,0,0,5.75,12,0,0
+129,North America,Trinidad And Tobago,0,0,5.51,7,0,0
+130,North America,Nicaragua,0,0,5.34,7,0,0
+131,South America,Venezuela,0,0,5.26,22,0,0
+132,North America,Bahamas,0,0,5.21,9,0,0
+133,North America,Costa Rica,0,0,4.99,43,0,0
+134,Africa,Morocco,0,0,4.74,26,0,0
+135,Asia,Azerbaijan,0,0,4.44,7,0,0
+136,Asia,Kyrgyzstan,0,0,4.03,5,0,0
+137,Africa,Madagascar,0,0,3.5,5,0,0
+138,Asia,Afghanistan,0,0,3.21,5,0,0
+139,Asia,Yemen,0,0,3.17,7,0,0
+140,Africa,Equatorial Guinea,0,0,3.01,4,0,0
+141,Asia,Bahrain,0,0,2.63,10,0,0
+142,Africa,Algeria,0,0,2.23,15,0,0
+143,Africa,Burundi,0,0,2.01,3,0,0
+144,Asia,Timor-Leste,0,0,2.01,3,0,0
+145,Europe,Monaco,0,0,2,3,0,0
+146,Africa,Angola,0,0,1.82,6,0,0
+147,Europe,Malta,0,0,1.54,8,0,0
+148,North America,Barbados,0,0,1.51,5,0,0
+149,Africa,Somalia,0,0,1.17,5,0,0
+150,Asia,Bhutan,0,0,1.01,2,0,0
+151,Africa,Togo,0,0,1.01,2,0,0
+152,Africa,Comoros,0,0,1,1,0,0
+153,Africa,Eritrea,0,0,1,1,0,0
+154,Oceania,Federated States Of Micronesia,0,0,1,1,0,0
+155,Europe,Kosovo,0,0,1,1,0,0
+156,Africa,South Sudan,0,0,1,1,0,0
+157,North America,Belize,0,0,0.5,1,0,0
+158,Oceania,Kiribati,0,0,0.5,1,0,0
+159,Oceania,Palau,0,0,0.34,2,0,0
+160,Europe,Liechtenstein,0,0,0.31,2,0,0
+161,Africa,Eswatini,0,0,0.26,6,0,0
+162,Africa,Libya,0,0,0.17,4,0,0
+163,Europe,Montenegro,0,0,0.16,3,0,0
+164,Africa,Mauritania,0,0,0.16,3,0,0
+165,Asia,Brunei,0,0,0.06,1,0,0
+166,Africa,Central African Republic,0,0,0.01,1,0,0
+167,Africa,Chad,0,0,0.01,1,0,0
+168,South America,Guyana,0,0,0.01,1,0,0
+169,Oceania,Marshall Islands,0,0,0.01,1,0,0
+170,Africa,Namibia,0,0,0.01,1,0,0
+171,Oceania,Nauru,0,0,0.01,1,0,0
+172,Africa,Niger,0,0,0.01,1,0,0
+173,North America,Saint Kitts And Nevis,0,0,0.01,1,0,0
+174,North America,Saint Lucia,0,0,0.01,1,0,0
+175,North America,Saint Vincent And The Grenadines,0,0,0.01,1,0,0
+176,Oceania,Samoa,0,0,0.01,1,0,0
+177,Europe,San Marino,0,0,0.01,1,0,0
+178,Oceania,Solomon Islands,0,0,0.01,1,0,0
+179,South America,Suriname,0,0,0.01,1,0,0
+180,Asia,Tajikistan,0,0,0.01,1,0,0
+181,Oceania,Tonga,0,0,0.01,1,0,0
+182,Asia,Turkmenistan,0,0,0.01,1,0,0
+183,Oceania,Tuvalu,0,0,0.01,1,0,0
+184,Oceania,Vanuatu,0,0,0.01,1,0,0
+,,Missing data,25,25,9804.31,10080,0.002549899,0.25498986
+,,Total ,640,814,183041,327333,,
