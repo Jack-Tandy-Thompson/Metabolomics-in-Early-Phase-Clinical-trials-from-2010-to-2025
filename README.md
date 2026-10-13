@@ -1,14 +1,14 @@
-# Integration-of-metabolomics-into-early-phase-clinical-trials-from-2010-to-2025
+# Metabolomics in Early-Phase Clinical Trials from 2010 to 2025
 
 This repository contains the R code used for the analysis reported in:
 
-Integration of metabolomics into early phase clinical trials from 2010 to 2025
+Metabolomics in Early-Phase Clinical Trials from 2010 to 2025 
 
 The analysis identifies early phase interventional clinical trials registered in the WHO International Clinical Trials Registry Platform (ICTRP), classifies trials by phase, registry, country, year and outcome field, and identifies studies incorporating metabolomics or related omics terminology.
 
 **Repository contents**
 
-•	analysis.R
+•	analysisgithub.R
 Main R script used to clean the ICTRP dataset, identify early phase trials, detect metabolomics-related studies, remove duplicate registrations, generate summary tables and produce figures.
 
 •	country_lookup.csv
@@ -95,7 +95,7 @@ How to run the analysis
 2.	Place ICTRP_Full_R.csv in the project root directory.
 3.	Ensure country_lookup.csv and continent_analysis.csv are present.
 4.	Open the R project or set the working directory to the repository root.
-5.	Run analysis.R.
+5.	Run analysisgithub.R.
    
 Example:
 source("analysis.R")
@@ -108,7 +108,7 @@ Duplicate registrations were identified using normalised public and scientific t
 **Citation**
 
 If using or adapting this code, please cite the associated manuscript and the archived repository DOI.
-Thompson J, et al. Integration of metabolomics into early phase clinical trials from 2010 to 2025.
+Thompson J.T.; Megase, M.; Boffito, M.; Caulfield, M.J.; Magavern, E.F., Metabolomics in Early-Phase Clinical Trials from 2010 to 2025. Metabolites, accepted for publication 2026. 
 
 **Licence**
 
