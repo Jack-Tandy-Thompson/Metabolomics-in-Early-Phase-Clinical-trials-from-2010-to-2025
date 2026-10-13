@@ -1,6 +1,6 @@
-####R code for 'Integration of metabolomics into early phase clinical trials from 2010 to 2025'####
+####R code for 'Metabolomics in Early-Phase Clinical Trials from 2010 to 2025'####
 
-#### 1.) PREPARING WORKSPACE####
+#### 1.) PREPARING WORKSPACE ####
 ### 1a. Install required tidyverse and janitor packages
 install.packages("tidyverse")
 library(dplyr)
@@ -13,6 +13,7 @@ library(lubridate)
 library(purrr)
 library(tidyr)
 library(tibble)
+install.packages("ggrepel")
 library(ggrepel)
 
 ### 1b. Set appropriate working directory using setwd(xxxxxxx)
@@ -26,7 +27,7 @@ ICTRP1 <- read_csv(
   locale = locale(encoding = "UTF-8"),  
   trim_ws = TRUE, col_names = FALSE)
 
-#### 2.) FORMATTING DATAFRAME  
+#### 2.) FORMATTING DATAFRAME ####
 ### 2a. Add appropriate column names 
 colnames(ICTRP1) <- c(
   "TrialID","last_update","SecondaryIDs","public_title","Scientific_title","url",
@@ -46,8 +47,8 @@ colnames(ICTRP1) <- c(
   "results_outcome_measures","results_url_protocol","results_IPD_plan",
   "results_IPD_description","results_date_completed","results_yes_no",
   "Ethics_Status","Ethics_Approval_Date","Ethics_Contact_Name",
-  "Ethics_Contact_Address","Ethics_Contact_Phone","Ethics_Contact_Email"
-)
+  "Ethics_Contact_Address","Ethics_Contact_Phone","Ethics_Contact_Email")
+
 ### 2b. Clean column names so I only have lower case
 ICTRP1 <- ICTRP1 %>% clean_names()
 
@@ -55,8 +56,7 @@ ICTRP1 <- ICTRP1 %>% clean_names()
 ICTRP2 <- ICTRP1 %>% select(trial_id, public_title, scientific_title, secondary_i_ds, study_type, primary_sponsor, secondary_sponsors, primary_outcome, secondary_outcomes, date_enrolment, date_registration, study_design, study_type, study_design, phase, countries, conditions, interventions)
 
 ### 2d. Renaming column name to make neater 
-ICTRP2 <- ICTRP2 %>%
-  rename(secondary_ids= secondary_i_ds)
+ICTRP2 <- ICTRP2 %>% rename(secondary_ids= secondary_i_ds)
 
 ## 2e. Adding row numbers to make it easier to relate back to original csv file for cross referencing (and then putting this as the first column with relocate()) 
 ICTRP2 <- ICTRP2 %>% mutate (row_number= row_number()) %>% relocate(row_number, .before=1)
@@ -92,36 +92,36 @@ str(ICTRP4)
 
 
 ### 3b. Select only early PHASE studies (Phase 0, 1, 2 or a combination of these)
-## First the code looks for if there is a 'Phase X: Yes or no' pattern to ensure no false positives. 
-## Second the code searches for any mention of 0,1/I,2/II and categorises accordingly. 
+## First, the code looks for if there is a 'Phase X: Yes or no' pattern to ensure no false positives. 
+## Second, the code searches for any mention of 0,1/I,2/II and categorises accordingly. 
 
 ICTRP5 <- ICTRP4 %>% mutate(phase_lower = str_to_lower(phase),
-has_phase_yesno = str_detect(phase_lower, "phase\\s*(i{1,3}|iv|\\d+).*?\\b(yes|no)\\b"),
-phase_clean = case_when(has_phase_yesno ~ map_chr(phase_lower, function(x) {yes_matches <- str_match_all(x, "phase\\s*(i{1,3}|iv|\\d+)\\)?\\s*:?\\s*yes" )[[1]][, 2]
- if (length(yes_matches) == 0) { NA_character_ } else {paste(yes_matches, collapse = "/")} }),
-           TRUE ~ phase_lower) %>%
-           str_replace_all("early phase 1", "phase 1") %>%
-           str_replace_all("\\biii\\b", "3") %>%
-           str_replace_all("\\bii\\b", "2") %>%
-           str_replace_all("\\biv\\b", "4") %>%
-           str_replace_all("\\bi\\b", "1") %>%
-           str_replace_all("phase", " ") %>%
-           str_replace_all("([0-9])[a-z]", "\\1") %>%
-           str_replace_all("[,;\\-]", "/") %>%
-           str_replace_all("\\s*/\\s*", "/") %>%
-           str_replace_all("[^0-9/ ]", " ") %>%
-           str_squish(),
-         
-         phase_group = case_when(
-           str_detect(phase_clean, "\\b0/1\\b|\\b1/0\\b") ~ "Phase 0/1",
-           str_detect(phase_clean, "\\b1/2\\b|\\b2/1\\b") ~ "Phase 1/2",
-           str_detect(phase_clean, "\\b2/3\\b|\\b3/2\\b") ~ "Phase 2/3",
-           
-           str_detect(phase_clean, "^0$|\\b0\\b") ~ "Phase 0",
-           str_detect(phase_clean, "^1$|\\b1\\b") ~ "Phase 1",
-           str_detect(phase_clean, "^2$|\\b2\\b") ~ "Phase 2",
-           
-           TRUE ~ NA_character_) )
+                            has_phase_yesno = str_detect(phase_lower, "phase\\s*(i{1,3}|iv|\\d+).*?\\b(yes|no)\\b"),
+                            phase_clean = case_when(has_phase_yesno ~ map_chr(phase_lower, function(x) {yes_matches <- str_match_all(x, "phase\\s*(i{1,3}|iv|\\d+)\\)?\\s*:?\\s*yes" )[[1]][, 2]
+                            if (length(yes_matches) == 0) { NA_character_ } else {paste(yes_matches, collapse = "/")} }),
+                            TRUE ~ phase_lower) %>%
+                              str_replace_all("early phase 1", "phase 1") %>%
+                              str_replace_all("\\biii\\b", "3") %>%
+                              str_replace_all("\\bii\\b", "2") %>%
+                              str_replace_all("\\biv\\b", "4") %>%
+                              str_replace_all("\\bi\\b", "1") %>%
+                              str_replace_all("phase", " ") %>%
+                              str_replace_all("([0-9])[a-z]", "\\1") %>%
+                              str_replace_all("[,;\\-]", "/") %>%
+                              str_replace_all("\\s*/\\s*", "/") %>%
+                              str_replace_all("[^0-9/ ]", " ") %>%
+                              str_squish(),
+                            
+                            phase_group = case_when(
+                              str_detect(phase_clean, "\\b0/1\\b|\\b1/0\\b") ~ "Phase 0/1",
+                              str_detect(phase_clean, "\\b1/2\\b|\\b2/1\\b") ~ "Phase 1/2",
+                              str_detect(phase_clean, "\\b2/3\\b|\\b3/2\\b") ~ "Phase 2/3",
+                              
+                              str_detect(phase_clean, "^0$|\\b0\\b") ~ "Phase 0",
+                              str_detect(phase_clean, "^1$|\\b1\\b") ~ "Phase 1",
+                              str_detect(phase_clean, "^2$|\\b2\\b") ~ "Phase 2",
+                              
+                              TRUE ~ NA_character_) )
 
 ICTRP6 <- ICTRP5 %>%
   filter(phase_group %in% c(
@@ -215,23 +215,23 @@ ICTRP8 %>% count(registry_code, registry_name, sort = TRUE)
 which(is.na(ICTRP8$registry_code)) #correct, no studies left 
 
 
-#### 5.) REMOVING REPLICATED STUDIES: to remove studies registered with multiple national regitries and keep the one with the earliest registration date
+#### 5.) REMOVING REPLICATED STUDIES: to remove studies registered with multiple national registries and keep the one with the earliest registration date
 
-### 5a. Take ICTRP8 and make a new column for a standardised/readable registration date label (known as date_regitration_std) -> label the new dataframe as ICTRP9
+### 5a. Take ICTRP8 and make a new column for a standardised/readable registration date label (known as date_registration_std) -> label the new dataframe as ICTRP9
 
 ICTRP9 <- ICTRP8 %>% mutate(date_registration_clean = str_trim(str_replace_all(date_registration, '"', '')), date_registration_std = case_when(
-                              
-                              # Full dates (many formats)
-                              !is.na(parse_date_time(date_registration_clean,
-                                                     orders = c("Y-m-d","d-m-Y","m-d-Y","d/m/Y","m/d/Y",
-                                                                "d-m-y","m-d-y","d/m/y","m/d/y",
-                                                                "B d, Y","b d, Y","d B Y","d b Y"),
-                                                     quiet = TRUE)) ~ as.Date(parse_date_time(
-                                                       date_registration_clean,
-                                                       orders = c("Y-m-d","d-m-Y","m-d-Y","d/m/Y","m/d/Y",
-                                                                  "d-m-y","m-d-y","d/m/y","m/d/y",
-                                                                  "B d, Y","b d, Y","d B Y","d b Y"),
-                                                       quiet = TRUE))))
+  
+  # Full dates (many formats)
+  !is.na(parse_date_time(date_registration_clean,
+                         orders = c("Y-m-d","d-m-Y","m-d-Y","d/m/Y","m/d/Y",
+                                    "d-m-y","m-d-y","d/m/y","m/d/y",
+                                    "B d, Y","b d, Y","d B Y","d b Y"),
+                         quiet = TRUE)) ~ as.Date(parse_date_time(
+                           date_registration_clean,
+                           orders = c("Y-m-d","d-m-Y","m-d-Y","d/m/Y","m/d/Y",
+                                      "d-m-y","m-d-y","d/m/y","m/d/y",
+                                      "B d, Y","b d, Y","d B Y","d b Y"),
+                           quiet = TRUE))))
 
 
 
@@ -367,7 +367,7 @@ write_csv(ICTRP_All, "ICTRP_All.csv")
 #### 8. Breakdown of studies by country (ICTRP_ALl)
 
 ### 8a. The country names are not structured and inputted differently. Consequently, I have produced a separate CSV file as a look-up table for countries with inconsistent naming to make them readable.  
-#This helps group the ICTRP_All into 187 countries and 1 Missing data categories. Missing data includes vague denominations for example entire continents rather than the specific country or unrecognisable country names.
+#This helps group the ICTRP_All into 187 countries and a 'Missing data' category. Missing data includes vague denominations for example entire continents rather than the specific country or unrecognisable country names.
 
 country_lookup <- tribble(
   ~raw_country, ~country_standard,
@@ -412,7 +412,6 @@ country_lookup <- tribble(
   "Nederland", "Holland",
   "Republic Of Netherlands", "Holland",
   "Netherlands", "Holland",
-  "Benelux", "Holland",
   "Netherlands Kingdom Of The", "Holland",
   "Nertherlands", "Holland",
   "Thenetherlands", "Holland",
@@ -492,6 +491,7 @@ country_lookup <- tribble(
   "Asia(Except Japan)", "Missing data",
   "Asia Except Japan", "Missing data",
   "Japan, Asia(Exept Japan)", "Missing data",
+  "Benelux", "Missing data",
   
   "Congo, The Democratic Republic Of The", "Congo",
   "Democratic Republic Of The Congo", "Congo",
@@ -977,7 +977,7 @@ ggplot(plot_data, aes(x = reorder(countries_clean, n_met), y = n_met)) +
   theme_minimal()
 
 
-### 11c. Percent Metabolomic studies by country: Same again but instead a scatter plot (using weighted scores)
+### 11b. Percent Metabolomic studies by country: Same again but instead a scatter plot (using weighted scores)
 
 plot_data <- country_met_fraction %>% 
   filter(countries_clean != "Missing data", n_all >= 4000)
@@ -996,7 +996,7 @@ ggplot(plot_data, aes(x = n_all, y = n_met)) +
   ) +
   theme_minimal() 
 
-### 11d. Number of metabolomic studies by COUNTRY: simple bar chart inlcuding only top 8 countries by absolute number of metabolomic studies 
+### 11c. Number of metabolomic studies by COUNTRY: simple bar chart including only top 8 countries by absolute number of metabolomic studies 
 
 plot_data <- country_met_fraction2 %>%
   filter(countries_clean != "Missing data") %>%
@@ -1017,8 +1017,8 @@ ggplot(plot_data, aes(x = reorder(countries_clean, Met_total_counts), y = Met_to
   guides(fill = "none") +
   expand_limits(y = max(plot_data$Met_total_counts) * 1.1)
 
-### 11e. A bubble plot for countries with >1000 trials (absolute count), where percent metabolomic is on weighted numbers (top 12 countries have same colours as subsequent national registries)
 
+###11d.A bubble plot for countries with >1000 trials (absolute count), where percent metabolomic is on weighted numbers (top 12 countries have same colours as subsequent national registries)
 plot_data <- country_met_fraction2 %>%
   filter(All_total_counts > 1000, countries_clean != "Missing data") %>%
   arrange(percent_metabolomics) %>%
@@ -1032,21 +1032,19 @@ ggplot(plot_data, aes(x = percent_metabolomics, y = countries_clean)) +
   
   scale_colour_manual(
     values = c(country_colours, "Other" = "grey70"),
-    guide = "none") + scale_size_continuous(name = "All studies") + labs (
-      x = "Percentage",
+    guide = "none") + scale_size_continuous(name = "All early-phase trials", labels = scales::comma) + labs (
+      x = "Early-phase trials involving metabolomics (%)",
       y = "Hosting country",
-      title = "Adoption of metabolomics by country") +
+      title = "Proportion of early-phase trials involving metabolomics, by country") +
   
   theme_minimal() +
   theme(axis.title = element_text(size = 14, face = "bold"),
         axis.text = element_text(size = 11),
         plot.title = element_text(size = 16, face = "bold"))
 
-
 #### 12.) GRAPHS for stratified analysis by PHASE
 
 ### 12a. ICTRP_All Phases 
-
 plot_data_all <- ICTRP_All %>%
   filter(!is.na(phase_group)) %>%
   count(phase_group, name = "n") %>%
@@ -1057,13 +1055,12 @@ ggplot(plot_data_all, aes(x = reorder(phase_group, n), y = n, fill = phase_group
   scale_fill_brewer(palette = "Set2") +
   geom_text(aes(label = n), hjust = -0.2, fontface = "bold") +
   coord_flip() +
-  expand_limits(y = max(plot_data$n) * 1.1) +   # 👈 FIX
+  expand_limits(y = max(plot_data_all$n) * 1.1) +   # 👈 FIX
   labs(
     x = "Phase of clinical study",
     y = "Number of studies",
     title = "Distribution of all clinical studies by phase",
-    fill = "Phase"
-  ) +
+    fill = "Phase") +
   theme(
     axis.title = element_text(size = 14, face = "bold"),
     axis.text = element_text(size = 12),
@@ -1084,7 +1081,7 @@ ggplot(plot_data_met, aes(x = phase_group, y = n, fill = phase_group)) +
   scale_fill_brewer(palette = "Set2") +
   geom_text(aes(label = n), hjust = -0.2, fontface = "bold") +
   coord_flip() +
-  expand_limits(y = max(plot_data$n) * 1.1) +   # 👈 FIX
+  expand_limits(y = max(plot_data_met$n) * 1.1) +   # 👈 FIX
   labs(
     x = "Phase of clinical study",
     y = "Number of studies",
@@ -1120,7 +1117,7 @@ ggplot(plot_data_phase_percent, aes(x = phase_group, y = percent_metabolomic, fi
   labs(
     x = "Phase of clinical study",
     y = "Metabolomic studies (%)",
-    title = "Increasing corporation of metabolomics at earlier phases",
+    title = "Increasing incorporation of metabolomics at earlier phases",
     fill = "Phase"
   ) +
   theme(
@@ -1417,7 +1414,7 @@ ggplot(plot_data, aes(x = year, y = n, fill = registry_name)) +
     size = 2
   ) +
   scale_y_continuous(
-    name = "All early phase trials",
+    name = "All early-phase trials", labels = scales::comma,
     sec.axis = sec_axis(
       ~ . / scale_factor,
       name = "Metabolomic (%)"
@@ -1425,9 +1422,7 @@ ggplot(plot_data, aes(x = year, y = n, fill = registry_name)) +
   ) +
   labs(
     x = "Year",
-    fill = "Registry",
-    title = "Growing inclusion of metabolomics in early phase clinical trials"
-  ) +
+    fill = "Registry") +
   theme_minimal() +
   theme(
     axis.title = element_text(size = 14, face = "bold"),
@@ -1441,36 +1436,6 @@ ICTRP_metabolomics %>%
   summarise(
     n_primary_outcome = sum(str_detect(found_in, "primary_outcome"), na.rm = TRUE),
     n_secondary_outcomes = sum(str_detect(found_in, "secondary_outcomes"), na.rm = TRUE))
-
-
-### 16a. Horizontal bar plot for breakdown by outcome 
-
-outcome_data <- tibble(
-  category = c("Primary", "Secondary"),
-  n = c(198, 640 - 198)) %>%
-  mutate(
-    percent = n / sum(n),
-    label = paste0(round(percent * 100, 1), "%"))
-
-ggplot(outcome_data, aes(x = 1, y = percent, fill = category)) + geom_col(width = 0.3) + coord_flip() +
-  geom_text( aes(label = label), position = position_stack(vjust = 0.5), colour = "white",fontface = "bold",
-             size = 5) +
-  
-  scale_fill_manual(values = c(
-    "Primary" = "#4C78A8",      
-    "Secondary" = "#D3D3D3")) + labs(
-      x = NULL,
-      y = NULL,
-      fill = NULL,
-      title = "Use of metabolomics in early phase trials by outcome classification"
-    ) +
-  theme_minimal() +
-  theme(
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
-    panel.grid = element_blank(),
-    legend.position = "none",
-    plot.title = element_text(size = 14, face = "bold")) 
 
 
 #### 17.) Stratified analysis by CONTINENT (this file has been made by allocating each country into a continent manually in excel)
@@ -1494,3 +1459,7 @@ continent_totals <- continent_analysis %>%
   mutate( percent_of_total = (total_Metabolomic_Absolute_counts / sum(total_Metabolomic_Absolute_counts)) * 100)
 
 continent_totals
+
+
+
+
