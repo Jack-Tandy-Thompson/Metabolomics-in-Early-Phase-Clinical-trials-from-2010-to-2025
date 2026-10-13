@@ -17,8 +17,6 @@ Lookup table used to standardise inconsistent country names in ICTRP records.
 •	continent_analysis.csv
 Manually curated country-to-continent classification and continent-level summary input.
 
-•	outputs/
-Folder for generated analysis outputs, including cleaned datasets, summary tables and figures.
 
 Data source
 
